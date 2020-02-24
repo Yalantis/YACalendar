@@ -1,6 +1,6 @@
 //
 //  SettingsViewController.swift
-//  YALCalendar
+//  YACalendar
 //
 //  Created by Vodolazkyi Anton on 2/3/20.
 //  Copyright © 2020 Yalantis. All rights reserved.

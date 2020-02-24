@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  YALCalendar
+//  YACalendar
 //
 //  Created by Vodolazkyi Anton on 1/31/20.
 //  Copyright © 2020 Yalantis. All rights reserved.
