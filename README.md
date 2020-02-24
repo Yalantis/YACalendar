@@ -112,6 +112,38 @@ These settings can be set directly on the `CalendarView`.
 | **currentDate**: Bool                                  | The date to which calendar should scroll  |
 | **selectionType**: SelectionType                       | Type of day selection. Possible values ***one, many, range**<p><img src="readme_images/one_selection.png" width="30%" height="auto"><img src="readme_images/many_selection.png" width="30%" height="auto"><img src="readme_images/range_selection.png" width="30%" height="auto"></p>| 
 
+#### Calendar Methods
+| Method                                                | Description                                                                                                                                                                                                                                                                                            |
+|---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **func scroll(to date: Date)**                          | Scroll to month with specified date.  |
+| **func selectDay(with date: Date)**                          | Select/deselect day with specified date. Use this method for single selection.  |
+| **func selectDays(with dates: [Date])**                      | Select days with specified dates. Use this method for multi selection.  |
+| **func selectRange(with startDay: Date, endDate: Date)**     | Select range of days within start and end dates. Use this method for range selection. |
+| **func setEvents(_ events: [CalendarEvent])**                | Set events to days with date specified in event. |
+| **func disableDays(with dates: [Date])**                     | Disable days with specified dates. |
+
+#### Changing look of the day, month, month header, day symbols or year header
+If you want change the font, color or other ui properties of one of the element you must override corresponding element config.
+
+For example: 
+To change text color of the day:
+1. Inherit DayConfig and override method.
+
+```swift
+class MyDayConfig: DayConfig {
+    
+    override func textColor(for state: DayState, indicator: DayIndicator) -> UIColor {
+        return .black
+    }
+}
+```
+
+2. Set config to calendar.
+```swift 
+calendarView.config.day = MyDayConfig()
+
+```
+
 #### Grid Properties
 
 You can set these settings by calling calendar.grid
