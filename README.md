@@ -106,13 +106,13 @@ calendarView.data = CalendarData()
 
 These settings can be set directly on the `CalendarView`.
 
-#### Calendar Settings
+#### Calendar Properties
 | Property                                                | Description                                                                                                                                                                                                                                                                                            |
 |---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **currentDate**: Bool                                  | The date to which calendar should scroll  |
 | **selectionType**: SelectionType                       | Type of day selection. Possible values ***one, many, range**<p><img src="readme_images/one_selection.png" width="30%" height="auto"><img src="readme_images/many_selection.png" width="30%" height="auto"><img src="readme_images/range_selection.png" width="30%" height="auto"></p>| 
 
-#### Grid Settings
+#### Grid Properties
 
 You can set these settings by calling calendar.grid
 
