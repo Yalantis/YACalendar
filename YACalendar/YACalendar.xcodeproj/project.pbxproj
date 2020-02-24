@@ -35,6 +35,27 @@
 		8862560C240402C600BF8985 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88625609240402C600BF8985 /* ViewController.swift */; };
 		8862560D240402C600BF8985 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862560A240402C600BF8985 /* SettingsViewController.swift */; };
 		8862560E240402C600BF8985 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8862560B240402C600BF8985 /* Main.storyboard */; };
+		886256562404361500BF8985 /* YearHeaderConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862563E2404361500BF8985 /* YearHeaderConfig.swift */; };
+		886256572404361500BF8985 /* DaySymbolsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862563F2404361500BF8985 /* DaySymbolsConfig.swift */; };
+		886256582404361500BF8985 /* DayConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886256402404361500BF8985 /* DayConfig.swift */; };
+		886256592404361500BF8985 /* MonthHeaderConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886256412404361500BF8985 /* MonthHeaderConfig.swift */; };
+		8862565A2404361500BF8985 /* MonthConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886256422404361500BF8985 /* MonthConfig.swift */; };
+		8862565B2404361500BF8985 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886256432404361500BF8985 /* Grid.swift */; };
+		8862565C2404361500BF8985 /* SelectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886256452404361500BF8985 /* SelectionType.swift */; };
+		8862565D2404361500BF8985 /* DaySymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886256462404361500BF8985 /* DaySymbols.swift */; };
+		8862565E2404361500BF8985 /* MonthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886256472404361500BF8985 /* MonthData.swift */; };
+		8862565F2404361500BF8985 /* DayIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886256482404361500BF8985 /* DayIndicator.swift */; };
+		886256602404361500BF8985 /* DayState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886256492404361500BF8985 /* DayState.swift */; };
+		886256612404361500BF8985 /* ScrollDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862564A2404361500BF8985 /* ScrollDirection.swift */; };
+		886256622404361500BF8985 /* CalendarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862564B2404361500BF8985 /* CalendarType.swift */; };
+		886256632404361500BF8985 /* DayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862564C2404361500BF8985 /* DayData.swift */; };
+		886256642404361500BF8985 /* CalendarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862564D2404361500BF8985 /* CalendarData.swift */; };
+		886256652404361500BF8985 /* WeekData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862564E2404361500BF8985 /* WeekData.swift */; };
+		886256662404361500BF8985 /* СalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862564F2404361500BF8985 /* СalendarEvent.swift */; };
+		886256672404361500BF8985 /* YearHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886256512404361500BF8985 /* YearHeaderView.swift */; };
+		886256682404361500BF8985 /* MonthHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886256522404361500BF8985 /* MonthHeaderView.swift */; };
+		886256692404361500BF8985 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886256532404361500BF8985 /* DayView.swift */; };
+		8862566B2404361500BF8985 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886256552404361500BF8985 /* CalendarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +91,27 @@
 		88625609240402C600BF8985 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8862560A240402C600BF8985 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		8862560B240402C600BF8985 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		8862563E2404361500BF8985 /* YearHeaderConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearHeaderConfig.swift; sourceTree = "<group>"; };
+		8862563F2404361500BF8985 /* DaySymbolsConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaySymbolsConfig.swift; sourceTree = "<group>"; };
+		886256402404361500BF8985 /* DayConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayConfig.swift; sourceTree = "<group>"; };
+		886256412404361500BF8985 /* MonthHeaderConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthHeaderConfig.swift; sourceTree = "<group>"; };
+		886256422404361500BF8985 /* MonthConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthConfig.swift; sourceTree = "<group>"; };
+		886256432404361500BF8985 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		886256452404361500BF8985 /* SelectionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionType.swift; sourceTree = "<group>"; };
+		886256462404361500BF8985 /* DaySymbols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaySymbols.swift; sourceTree = "<group>"; };
+		886256472404361500BF8985 /* MonthData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthData.swift; sourceTree = "<group>"; };
+		886256482404361500BF8985 /* DayIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayIndicator.swift; sourceTree = "<group>"; };
+		886256492404361500BF8985 /* DayState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayState.swift; sourceTree = "<group>"; };
+		8862564A2404361500BF8985 /* ScrollDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollDirection.swift; sourceTree = "<group>"; };
+		8862564B2404361500BF8985 /* CalendarType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarType.swift; sourceTree = "<group>"; };
+		8862564C2404361500BF8985 /* DayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayData.swift; sourceTree = "<group>"; };
+		8862564D2404361500BF8985 /* CalendarData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarData.swift; sourceTree = "<group>"; };
+		8862564E2404361500BF8985 /* WeekData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekData.swift; sourceTree = "<group>"; };
+		8862564F2404361500BF8985 /* СalendarEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "СalendarEvent.swift"; sourceTree = "<group>"; };
+		886256512404361500BF8985 /* YearHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearHeaderView.swift; sourceTree = "<group>"; };
+		886256522404361500BF8985 /* MonthHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthHeaderView.swift; sourceTree = "<group>"; };
+		886256532404361500BF8985 /* DayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
+		886256552404361500BF8985 /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,11 +211,64 @@
 				8862560B240402C600BF8985 /* Main.storyboard */,
 				8862560A240402C600BF8985 /* SettingsViewController.swift */,
 				88625609240402C600BF8985 /* ViewController.swift */,
+				8862563B2404361500BF8985 /* YACalendar */,
 				886255FD2404027200BF8985 /* Assets.xcassets */,
 				886255FF2404027200BF8985 /* LaunchScreen.storyboard */,
 				886256022404027200BF8985 /* Info.plist */,
 			);
 			path = YACalendarExample;
+			sourceTree = "<group>";
+		};
+		8862563B2404361500BF8985 /* YACalendar */ = {
+			isa = PBXGroup;
+			children = (
+				886256552404361500BF8985 /* CalendarView.swift */,
+				886256432404361500BF8985 /* Grid.swift */,
+				8862563D2404361500BF8985 /* Configs */,
+				886256442404361500BF8985 /* Data */,
+				886256502404361500BF8985 /* Views */,
+			);
+			path = YACalendar;
+			sourceTree = SOURCE_ROOT;
+		};
+		8862563D2404361500BF8985 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				8862563E2404361500BF8985 /* YearHeaderConfig.swift */,
+				8862563F2404361500BF8985 /* DaySymbolsConfig.swift */,
+				886256402404361500BF8985 /* DayConfig.swift */,
+				886256412404361500BF8985 /* MonthHeaderConfig.swift */,
+				886256422404361500BF8985 /* MonthConfig.swift */,
+			);
+			path = Configs;
+			sourceTree = "<group>";
+		};
+		886256442404361500BF8985 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				886256452404361500BF8985 /* SelectionType.swift */,
+				886256462404361500BF8985 /* DaySymbols.swift */,
+				886256472404361500BF8985 /* MonthData.swift */,
+				886256482404361500BF8985 /* DayIndicator.swift */,
+				886256492404361500BF8985 /* DayState.swift */,
+				8862564A2404361500BF8985 /* ScrollDirection.swift */,
+				8862564B2404361500BF8985 /* CalendarType.swift */,
+				8862564C2404361500BF8985 /* DayData.swift */,
+				8862564D2404361500BF8985 /* CalendarData.swift */,
+				8862564E2404361500BF8985 /* WeekData.swift */,
+				8862564F2404361500BF8985 /* СalendarEvent.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		886256502404361500BF8985 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				886256512404361500BF8985 /* YearHeaderView.swift */,
+				886256522404361500BF8985 /* MonthHeaderView.swift */,
+				886256532404361500BF8985 /* DayView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,9 +412,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8862565F2404361500BF8985 /* DayIndicator.swift in Sources */,
+				8862565A2404361500BF8985 /* MonthConfig.swift in Sources */,
+				8862566B2404361500BF8985 /* CalendarView.swift in Sources */,
+				886256602404361500BF8985 /* DayState.swift in Sources */,
+				886256692404361500BF8985 /* DayView.swift in Sources */,
+				886256572404361500BF8985 /* DaySymbolsConfig.swift in Sources */,
 				8862560C240402C600BF8985 /* ViewController.swift in Sources */,
+				886256562404361500BF8985 /* YearHeaderConfig.swift in Sources */,
+				886256652404361500BF8985 /* WeekData.swift in Sources */,
+				8862565D2404361500BF8985 /* DaySymbols.swift in Sources */,
+				886256642404361500BF8985 /* CalendarData.swift in Sources */,
 				88625608240402B600BF8985 /* AppDelegate.swift in Sources */,
+				8862565E2404361500BF8985 /* MonthData.swift in Sources */,
+				886256622404361500BF8985 /* CalendarType.swift in Sources */,
+				886256682404361500BF8985 /* MonthHeaderView.swift in Sources */,
+				886256672404361500BF8985 /* YearHeaderView.swift in Sources */,
+				886256592404361500BF8985 /* MonthHeaderConfig.swift in Sources */,
+				8862565C2404361500BF8985 /* SelectionType.swift in Sources */,
+				886256582404361500BF8985 /* DayConfig.swift in Sources */,
+				886256632404361500BF8985 /* DayData.swift in Sources */,
+				886256662404361500BF8985 /* СalendarEvent.swift in Sources */,
 				8862560D240402C600BF8985 /* SettingsViewController.swift in Sources */,
+				8862565B2404361500BF8985 /* Grid.swift in Sources */,
+				886256612404361500BF8985 /* ScrollDirection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

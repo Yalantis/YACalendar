@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import YACalendar
 
 class CalendarSettings {
     var gridType: CalendarType = .threeOnFour
