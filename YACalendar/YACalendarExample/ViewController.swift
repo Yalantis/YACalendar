@@ -59,7 +59,8 @@ class ViewController: UIViewController {
         calendarView.isPagingEnabled = settings.isPagingEnabled
         calendarView.grid.scrollDirection = settings.scrollDirection
         calendarView.selectionType = settings.selectionType
-        
+        calendarView.config.month.showDaysOut = settings.showDaysOut
+
         if #available(iOS 13.0, *) {
             yearBarButton.image = viewType == .month ? UIImage(systemName: "chevron.left") : nil
         }
@@ -73,8 +74,6 @@ class ViewController: UIViewController {
             calendarView.config.monthTitle.formatter = formetter
             calendarView.config.monthTitle.showSeparator = true
             
-            calendarView.config.month.showDaysOut = true
-            
         case .year:
             calendarView.grid.calendarType = settings.gridType
             
@@ -82,7 +81,6 @@ class ViewController: UIViewController {
             formetter.dateFormat = settings.gridType == .threeOnFour ? "MMM" : "MMMM"
             calendarView.config.monthTitle.formatter = formetter
             calendarView.config.monthTitle.showSeparator = false
-            calendarView.config.month.showDaysOut = false
         }
         updateCalendarSize()
         calendarView.data = CalendarData(calendar: calendar, startDate: settings.startDate, endDate: settings.endDate)
