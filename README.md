@@ -1,3 +1,5 @@
+<p align="center"><img src="readme_images/logo_calendar.png" width="20%" height="auto"> </p>
+
 ## About ![Swift 5.0](https://img.shields.io/badge/Swift-5.0-orange.svg)
 
 YACalendar is a highly customizable iOS calendar that’s easy to integrate into your application. Currently, it supports year and month views with vertical and horizontal scrolling. Our solution optimized for all iPhone screens, so it will display correctly on old devices like the iPhone 5 as well as on the newest iPhone models.
