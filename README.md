@@ -1,6 +1,7 @@
 ## About ![Swift 5.0](https://img.shields.io/badge/Swift-5.0-orange.svg)
 
-iOS Calendar with support of year and month view and vertical and horizontal scroll.
+YACalendar is a highly customizable iOS calendar that’s easy to integrate into your application. Currently, it supports year and month views with vertical and horizontal scrolling. Our solution optimized for all iPhone screens, so it will display correctly on old devices like the iPhone 5 as well as on the newest iPhone models.
+YACalendar is constantly evolving and aims to become a one-size-fits-all solution. We’re planning to add event management functionality and the ability to attach notes, links, and documents to events. 
 
 ## Features
 |         | YALCalendar  |
@@ -17,7 +18,7 @@ iOS Calendar with support of year and month view and vertical and horizontal scr
 
 ## Example project
 
-Take a look at the example project over [here](Example/)
+Take a look at the example project over [here](YACalendar/YACalendarExample)
 
 ## Usage
 
@@ -34,7 +35,7 @@ let calendarView = CalendarView(frame: frame)
 view.addSubview(calendarView)
 
 ```
-***NOTE:*** You can use interface builder for creating calendar view. For example check [here](Example/).
+***NOTE:*** You can use interface builder for creating calendar view. For example check [here](YACalendar/YACalendarExample).
 
 2. Create calendar.
 If you want to change first day of the week you should change ```firstWeekday``` property.
