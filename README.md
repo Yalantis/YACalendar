@@ -7,38 +7,51 @@ YACalendar is constantly evolving and aims to become a one-size-fits-all solutio
 |         | YALCalendar  |
 ----------|-----------------
 ✅ | Year view with 2 or 3 columns and month view
-✅ | Vertical and horizontal scroll
-✅ | Portrait and landscape support
+✅ | Portrait and landscape modes 
+✅ | Vertical and horizontal scrolling
 ✅ | Paging 
-✅ | First weekday Monday or Sunday 
-✅ | Show days out 
-✅ | One, many or range of days selection
-✅ | Ability to disable specific days
-✅ | Event indicators
+✅ | Markers for current and selected dates
+✅ | Markers for past and future events
+✅ | Ability to set the start of the week to Monday or Sunday
+✅ | Weekend view
+✅ | Selection of one, multiple, or a range of days 
 
-## Example project
+## Project example
 
-Take a look at the example project over [here](YACalendar/YACalendarExample)
+Take a look at an example project [here](YACalendar/YACalendarExample)
 
-## Usage
+## Requirements
 
-### Adding YALCalendar to your project
-#### CocoaPods
-Add ```pod 'YACalendar'``` to your Podfile and then make sure to ```import YACalendar``` in your code.
+* Swift 5.0
+* Xcode 11.2
+* iOS 10.0+
 
-### Creating calendar and providing it with data.
+## Installation
 
-1. Create a calendar view instance and add it to view hierarchy.
+To install YACalendar via [CocoaPods](http://cocoapods.org), add the following lines to your Podfile:
+
+```ruby
+use_frameworks!
+
+pod 'YACalendar'
+
+```
+
+Then make sure to add this line to your code:
+```import YACalendar``` 
+
+## Using YACalendar
+
+1. Create a calendar view instance and add it to the view hierarchy.
 
 ```swift
 let calendarView = CalendarView(frame: frame)
 view.addSubview(calendarView)
 
 ```
-***NOTE:*** You can use interface builder for creating calendar view. For example check [here](YACalendar/YACalendarExample).
+***NOTE:*** You can use an interface builder for creating a calendar view. [Here’s](YACalendar/YACalendarExample) an example.
 
-2. Create calendar.
-If you want to change first day of the week you should change ```firstWeekday``` property.
+2. Create a calendar. If you want to change the first day of the week, change the ```firstWeekday``` property.
 
 ```swift
 let calendar = Calendar.current
@@ -46,7 +59,7 @@ calendar.firstWeekday = 2 // 1 - Sunday, 2 - Monday
 
 ```
 
-3. Specify calendar grid type and scroll direction.
+3. Specify the calendar grid type and scroll direction.
 
 ```swift
 calendarView.grid.calendarType = .oneOnOne
@@ -54,18 +67,18 @@ calendarView.grid.scrollDirection = .vertical
 
 ```
 
-4. Create calendar data object which is an object that contains calendar, start date and end date. Set it to ```data``` property of calendar view. All days will be displayed according to specified calendar and within range of start and end date.
+4. Create the calendar data object, which contains the calendar itself, the start date, and the end date. Set it to the ```data``` property of the calendar view. All days will be displayed according to the specified calendar and within the range of the start and end dates.
 
 ```swift
 calendarView.data = CalendarData(calendar: calendar, startDate: startDate, endDate: endDate)
 
 ```
-***NOTE:*** After setting ```data``` property calendar will be redrawn.
+***NOTE:*** After setting the ```data``` property, the calendar will be redrawn.
 
 ## Examples
 
 ### Month view
-Month view with vertical and horizontal scroll direction.
+Month view with vertical and horizontal scrolling:
 <p>
 <img src="readme_images/month_view.png" width="30%" height="auto">
 </p>
@@ -77,8 +90,8 @@ calendarView.data = CalendarData()
 
 ```
 
-### Year view 3 on 4 grid
-Year view with 3 on 4 grid for portrait orientation and 5 on 2 for landscape.
+### Year view 3×4 grid
+Year view with a 3×4 grid for portrait orientation and a 5×2 grid for landscape orientation:
 <p>
 <img src="readme_images/year_view_3_on_4.png" width="30%" height="auto"> <img src="readme_images/year_view_3_on_4_horizontal.png" width="60%" height="auto" hspace="20" align="top">
 </p>
@@ -90,8 +103,8 @@ calendarView.data = CalendarData()
 
 ```
     
-### Year view 2 on 3 grid
-Year view with 2 on 3 grid for portrait orientation and 3 on 1 for landscape.
+### Year view 2×3 grid
+Year view with a 2×3 grid for portrait orientation and a 3×1 grid for landscape orientation:
 <p>
 <img src="readme_images/year_view_2_on_3.png" width="30%" height="auto"> <img src="readme_images/year_view_2_on_3_horizontal.png" width="60%" height="auto" hspace="20" align="top">
 </p>
@@ -105,30 +118,30 @@ calendarView.data = CalendarData()
 
 ## Customization
 
-These settings can be set directly on the `CalendarView`.
+These settings can be configured directly on the ```CalendarView```.
 
-#### Calendar Properties
+#### Calendar properties
 | Property                                                | Description                                                                                                                                                                                                                                                                                            |
 |---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **currentDate**: Bool                                  | The date to which calendar should scroll  |
-| **selectionType**: SelectionType                       | Type of day selection. Possible values ***one, many, range**<p><img src="readme_images/one_selection.png" width="30%" height="auto"><img src="readme_images/many_selection.png" width="30%" height="auto"><img src="readme_images/range_selection.png" width="30%" height="auto"></p>| 
+| **currentDate**: Bool                                  | The date to which the calendar should scroll  |
+| **selectionType**: SelectionType                       | Selection type (for selecting dates): one, many, range<p><img src="readme_images/one_selection.png" width="30%" height="auto"><img src="readme_images/many_selection.png" width="30%" height="auto"><img src="readme_images/range_selection.png" width="30%" height="auto"></p>| 
 
 #### Calendar Methods
 | Method                                                | Description                                                                                                                                                                                                                                                                                            |
 |---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **func scroll(to date: Date)**                          | Scroll to month with specified date.  |
-| **func selectDay(with date: Date)**                          | Select/deselect day with specified date. Use this method for single selection.  |
-| **func selectDays(with dates: [Date])**                      | Select days with specified dates. Use this method for multi selection.  |
-| **func selectRange(with startDay: Date, endDate: Date)**     | Select range of days within start and end dates. Use this method for range selection. |
-| **func setEvents(_ events: [CalendarEvent])**                | Set events to days with date specified in event. |
-| **func disableDays(with dates: [Date])**                     | Disable days with specified dates. |
+| **func scroll(to date: Date)**                          | Scroll to the month with the specified date.  |
+| **func selectDay(with date: Date)**                          | Select/deselect a specific day. Use this method for selecting/deselecting a single day.  |
+| **func selectDays(with dates: [Date])**                      | Select/deselect specified days. Use this method for selecting/deselecting multiple days.  |
+| **func selectRange(with startDay: Date, endDate: Date)**     | Select a range of days within the start and end dates. |
+| **func setEvents(_ events: [CalendarEvent])**                | Set events to the dates specified in the event. |
+| **func disableDays(with dates: [Date])**                     | Disable specified days. |
 
-#### Changing look of the day, month, month header, day symbols or year header
-If you want change the font, color or other ui properties of one of the element you must override corresponding element config.
+#### Changing the look of the day, month, month header, day symbols, and year header
+If you want to change the font, color, or other UI properties of one of these elements, you must override the corresponding element config.
 
-For example: 
-To change text color of the day:
-1. Inherit DayConfig and override method.
+For example, to change the text color for days:
+
+1. Inherit ```DayConfig``` and override the method.
 
 ```swift
 class MyDayConfig: DayConfig {
@@ -139,7 +152,7 @@ class MyDayConfig: DayConfig {
 }
 ```
 
-2. Set config to calendar.
+2. Set config to the calendar.
 ```swift 
 calendarView.config.day = MyDayConfig()
 
@@ -147,35 +160,31 @@ calendarView.config.day = MyDayConfig()
 
 #### Grid Properties
 
-You can set these settings by calling calendar.grid
+You can set these settings by calling ```calendar.grid```
 
 | Property                                                | Description                                                                                                                                                                                                                                                                                            |
 |---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **calendarType**: CalendarType                         | Grid representation of months. Possible values ***oneOnOne, twoOnThree, threeOnFour**|
-| **scrollDirection**: ScrollDirection                   | Vertical or horizonal scroll direction.| 
+| **calendarType**: CalendarType                         | Grid representation of months. Possible values: oneOnOne, twoOnThree, threeOnFour|
+| **scrollDirection**: ScrollDirection                   | Set vertical or horizontal scrolling direction | 
+
+## Project plans
+We have far-reaching plans to improve YACalendar. We want to add:
+- the ability to apply a custom style for a certain date
+- the ability to add custom actions for events (i.e. event sharing)
+- the ability to attach links and documents
+- notes
+- the ability to disable and enable specific days
+- customizable margins
+- dark mode
+- a special state for bookings (like those on travel and booking platforms)
+- recurring events
+- an interface for creating events
+
 
 ## Release Notes
 
 Version 1.0
 * Release version.
-
-
-## Requirements
-
-* Swift 5.0
-* Xcode 11.2
-* iOS 10.0+
-
-## Installation
-
-#### [CocoaPods](http://cocoapods.org)
-
-```ruby
-use_frameworks!
-
-pod 'YACalendar'
-
-```
 
 ## License
 
