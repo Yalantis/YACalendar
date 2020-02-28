@@ -5,6 +5,8 @@
 YACalendar is a highly customizable iOS calendar that’s easy to integrate into your application. Currently, it supports year and month views with vertical and horizontal scrolling. Our solution optimized for all iPhone screens, so it will display correctly on old devices like the iPhone 5 as well as on the newest iPhone models.
 YACalendar is constantly evolving and aims to become a one-size-fits-all solution. We’re planning to add event management functionality and the ability to attach notes, links, and documents to events. 
 
+<p align="center"><img src="readme_images/about.gif" width="60%" height="auto"> </p>
+
 ## Features
 |         | YALCalendar  |
 ----------|-----------------
