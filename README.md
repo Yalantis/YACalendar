@@ -173,16 +173,9 @@ You can set these settings by calling ```calendar.grid```
 
 ## Project plans
 We have far-reaching plans to improve YACalendar. We want to add:
-- the ability to apply a custom style for a certain date
-- the ability to add custom actions for events (i.e. event sharing)
-- the ability to attach links and documents
-- notes
-- the ability to disable and enable specific days
-- customizable margins
-- dark mode
-- a special state for bookings (like those on travel and booking platforms)
-- recurring events
-- an interface for creating events
+- Event view (creating, management, recurring events)
+- Appointment scheduling view
+- Dark mode
 
 
 ## Release Notes
