@@ -8,7 +8,7 @@ YACalendar is constantly evolving and aims to become a one-size-fits-all solutio
 <p align="center"><img src="readme_images/about.gif" width="100%" height="auto"> </p>
 
 ## Features
-|         | YALCalendar  |
+|         | YACalendar  |
 ----------|-----------------
 ✅ | Year view with 2 or 3 columns and month view
 ✅ | Portrait and landscape modes 
