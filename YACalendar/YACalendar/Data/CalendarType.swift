@@ -14,9 +14,10 @@ fileprivate let maxNumberOfWeeks = 6
 public enum CalendarType {
     case oneOnOne, twoOnThree, threeOnFour
     
-    func monthSize(numberOfWeeks: Int = maxNumberOfWeeks) -> CGSize {
+    func monthSize(showTitle: Bool, numberOfWeeks: Int = maxNumberOfWeeks) -> CGSize {
         var size: CGSize = .zero
-        size.height += (firstWeekTopInset + (CGFloat(numberOfWeeks) * (weekInset.top + weekHeight))) + weekInset.bottom
+        let titleInset = showTitle ? firstWeekTopInset : weekInset.top
+        size.height += (titleInset + (CGFloat(numberOfWeeks) * (weekInset.top + weekHeight))) + weekInset.bottom
         
         switch self {
         case .oneOnOne where isMaxScreen: size.width = 366

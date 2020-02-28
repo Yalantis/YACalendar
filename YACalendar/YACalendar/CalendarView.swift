@@ -89,6 +89,7 @@ public class CalendarView: UIView {
             position: monthWithCurrentDate.element.gridPosition,
             data: data,
             yearNumber: monthWithCurrentDate.element.yearNumber,
+            showTitle: config.month.showTitle,
             rectSize: scrollView.frame.size,
             isPortrait: isPortrait,
             showDaysOut: config.month.showDaysOut
@@ -356,6 +357,7 @@ public class CalendarView: UIView {
                 for: month.offset,
                 data: data,
                 position: position,
+                showTitle: config.month.showTitle,
                 yearNumber: month.element.yearNumber,
                 rectSize: scrollView.frame.size,
                 isPortrait: isPortrait,
@@ -364,9 +366,9 @@ public class CalendarView: UIView {
             month.element.gridPosition = position
             month.element.rect = monthRect
             
-            for week in month.element.weeks.enumerated() {
+            for week in month.element.weeks.enumerated() where config.month.showDaysOut || week.offset <= month.element.numberOfWeeks - 1 {
                 // Weeks Calculation
-                let weekRect = grid.weekRect(for: week.offset, monthRect: monthRect)
+                let weekRect = grid.weekRect(for: week.offset, showTitle: config.month.showTitle, monthRect: monthRect)
                 week.element.rect = weekRect
                 
                 for day in week.element.days.enumerated() {
@@ -403,6 +405,8 @@ public class CalendarView: UIView {
             }
             
             monthData.weeks.forEach { week in
+                guard week.rect != .zero else { return }
+                
                 let weekView = UIView(frame: week.rect)
                 week.view = weekView
                 monthView.addSubview(weekView)
@@ -434,6 +438,7 @@ public class CalendarView: UIView {
         let gridSize = grid.contentSize(
             for: data,
             rectSize: scrollView.frame.size,
+            showTitle: config.month.showTitle,
             isPortrait: isPortrait,
             showDaysOut: config.month.showDaysOut
         )
@@ -455,7 +460,7 @@ public class CalendarView: UIView {
             daysStackView.addArrangedSubview(label)
         }
         
-        let inset = (scrollView.frame.width - (CGFloat(grid.calendarType.matrix(isPortait: isPortrait).columns) * grid.calendarType.monthSize().width)) / 2
+        let inset = (scrollView.frame.width - (CGFloat(grid.calendarType.matrix(isPortait: isPortrait).columns) * grid.calendarType.monthSize(showTitle: config.month.showTitle).width)) / 2
         daysStackView.frame.origin.x = inset
         daysStackView.frame.size = CGSize(width: frame.width - (inset * 2), height: config.daySymbols.height)
         daysSymbolsSeparatorView.frame = CGRect(x: 0, y: daysStackView.frame.maxY, width: scrollView.frame.width, height: 1)
