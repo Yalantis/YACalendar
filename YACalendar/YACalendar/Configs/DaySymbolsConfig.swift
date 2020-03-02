@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class DaySymbolsConfig {
+open class DaySymbolsConfig {
     
     public var isEnabled: Bool = true
     public var type: DaySymbols = .short

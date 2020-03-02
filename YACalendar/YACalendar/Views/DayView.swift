@@ -53,6 +53,8 @@ public final class DayView: UIView {
             view.layer.cornerRadius = view.frame.height / 2
             view.tag = dayIndicatorViewTag
             view.backgroundColor = config.indicatorColor(for: day.state, indicator: day.indicator)
+            view.layer.borderColor = config.borderColor(for: day.state, indicator: day.indicator)?.cgColor
+            view.layer.borderWidth = config.borderWidth(for: day.state, indicator: day.indicator)
             insertSubview(view, at: 0)
 
             switch (day.state, day.indicator) {
@@ -65,7 +67,7 @@ public final class DayView: UIView {
                     height: bounds.height - (inset.top + inset.bottom)
                 )
                 backView.tag = dayIndicatorViewTag
-                backView.backgroundColor = UIColor.black.withAlphaComponent(0.15)
+                backView.backgroundColor = config.indicatorColor(for: day.state, indicator: .inRange)
                 insertSubview(backView, at: 1)
                 break
                 
@@ -85,11 +87,6 @@ public final class DayView: UIView {
                 }
                 
                 view.layer.addSublayer(disableLayer)
-                break
-                
-            case (.today, _):
-                view.layer.borderWidth = 1
-                view.layer.borderColor = UIColor(displayP3Red: 247 / 255, green: 101 / 255, blue: 48 / 255, alpha: 1.0).cgColor
                 break
                 
             default: break

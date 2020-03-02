@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class YearHeaderConfig {
+open class YearHeaderConfig {
     
     public var textColor: UIColor = .black
     public var currentTextColor: UIColor = UIColor(displayP3Red: 247 / 255, green: 101 / 255, blue: 48 / 255, alpha: 1.0)

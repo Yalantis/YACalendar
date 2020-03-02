@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class MonthHeaderConfig {
+open class MonthHeaderConfig {
     
     public var textColor: UIColor = .black
     public var currentTextColor: UIColor = UIColor(displayP3Red: 255 / 255, green: 99 / 255, blue: 0 / 255, alpha: 1.0)

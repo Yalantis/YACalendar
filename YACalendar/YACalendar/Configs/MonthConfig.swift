@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class MonthConfig {
+open class MonthConfig {
     
     public var showTitle: Bool = true
     public var showDaysOut: Bool = false
