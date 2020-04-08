@@ -192,7 +192,7 @@ public class CalendarView: UIView {
     private func redraw() {
         scrollView.frame.size = bounds.size
         
-        if grid.calendarType == .oneOnOne && config.daySymbols.isEnabled {
+        if (grid.calendarType == .oneOnOne || grid.calendarType == .week) && config.daySymbols.isEnabled {
             scrollView.frame.origin.y = config.daySymbols.height
             daysStackView.isHidden = false
             daysSymbolsSeparatorView.isHidden = false
@@ -361,19 +361,47 @@ public class CalendarView: UIView {
                 yearNumber: month.element.yearNumber,
                 rectSize: scrollView.frame.size,
                 isPortrait: isPortrait,
+                previousMonthMaxX: month.offset == 0 ? 0 : data.months[month.offset - 1].rect.maxX,
                 showDaysOut: config.month.showDaysOut
             )
             month.element.gridPosition = position
             month.element.rect = monthRect
             
-            for week in month.element.weeks.enumerated() where config.month.showDaysOut || week.offset <= month.element.numberOfWeeks - 1 {
+            for week in month.element.weeks.enumerated() where week.offset <= month.element.numberOfWeeks - 1 || config.month.showDaysOut {
                 // Weeks Calculation
-                let weekRect = grid.weekRect(for: week.offset, showTitle: config.month.showTitle, monthRect: monthRect)
+                let weekRect: CGRect
+                
+                if grid.calendarType == .week {
+                    weekRect = grid.weekRectForWeekView(
+                        monthData: month.element,
+                        weekIndex: week.offset,
+                        screenWidth: scrollView.frame.size.width,
+                        previousWeekEndX: week.offset == 0 ? 0.0 : month.element.weeks[week.offset - 1].rect.maxX
+                    )
+                } else {
+                    weekRect = grid.weekRect(for: week.offset, showTitle: config.month.showTitle, rect: monthRect)
+                }
                 week.element.rect = weekRect
                 
-                for day in week.element.days.enumerated() {
+                let days = grid.calendarType == .week ? week.element.days.filter { $0.state != .out } : week.element.days
+                
+                for day in days.enumerated() {
                     // Days Calculation
-                    day.element.rect = grid.dayRect(for: day.offset, weekRect: weekRect)
+                    if grid.calendarType == .week {
+                        if day.element.state == .out {
+                            continue
+                        }
+                        day.element.rect = grid.dayRectForWeekView(
+                            for: day.offset,
+                            weekRect: weekRect,
+                            screenWidth: scrollView.frame.size.width
+                        )
+                    } else {
+                        day.element.rect = grid.dayRect(
+                            for: day.offset,
+                            weekRect: weekRect
+                        )
+                    }
                 }
             }
         }
@@ -390,6 +418,7 @@ public class CalendarView: UIView {
                 let yearHeaderViewRect = grid.yearHeaderRect(monthRect: monthData.rect, containerRect: frame)
                 let yearHeaderView = YearHeaderView(frame: yearHeaderViewRect)
                 yearHeaderView.configure(
+                    
                     with: config.yearHeader,
                     isCurrentYear: monthData.isCurrentYear,
                     yearDate: monthData.startMonthDate,
@@ -406,11 +435,11 @@ public class CalendarView: UIView {
             
             monthData.weeks.forEach { week in
                 guard week.rect != .zero else { return }
-                
+
                 let weekView = UIView(frame: week.rect)
                 week.view = weekView
                 monthView.addSubview(weekView)
-                
+
                 week.days.forEach { day in
                     if config.month.showDaysOut || monthData.containsDate(day.date) {
                         let dayView = DayView(frame: day.rect)

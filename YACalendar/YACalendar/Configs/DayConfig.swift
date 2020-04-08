@@ -49,6 +49,7 @@ public class DayConfig {
         case .oneOnOne: return 14
         case .twoOnThree: return 10
         case .threeOnFour: return 8
+        case .week: return 14
         }
     }
     
@@ -57,6 +58,7 @@ public class DayConfig {
         case .oneOnOne: return UIEdgeInsets(top: 9, left: 9, bottom: 9, right: 9)
         case .twoOnThree: return UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
         case .threeOnFour: return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        case .week: return UIEdgeInsets(top: 9, left: 9, bottom: 9, right: 9)
         }
     }
     

@@ -9,7 +9,7 @@
 import UIKit
 
 enum ViewType {
-    case month, year
+    case week, month, year
 }
 
 class ViewController: UIViewController {
@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet private var yearLabel: UILabel!
     @IBOutlet private var calendarTrailingConstraint: NSLayoutConstraint!
 
-    private var viewType: ViewType = .month
+    private var viewType: ViewType = .week
     private var settings = CalendarSettings()
     private let calendar = Calendar.current
 
@@ -56,19 +56,27 @@ class ViewController: UIViewController {
     }
     
     private func applySettings() {
-        calendarView.isPagingEnabled = settings.isPagingEnabled
         calendarView.grid.scrollDirection = settings.scrollDirection
         calendarView.selectionType = settings.selectionType
-        calendarView.config.month.showDaysOut = settings.showDaysOut
 
         if #available(iOS 13.0, *) {
             yearBarButton.image = viewType == .month ? UIImage(systemName: "chevron.left") : nil
         }
         
         switch viewType {
+        case .week:
+            calendarView.grid.calendarType = .week
+            calendarView.isPagingEnabled = true
+            calendarView.config.month.showDaysOut = false
+            calendarView.config.month.showTitle = false
+            calendarView.config.daySymbols.height = 14
+            calendarView.config.daySymbols.separatorColor = .clear
+
         case .month:
             calendarView.grid.calendarType = .oneOnOne
-            
+            calendarView.isPagingEnabled = settings.isPagingEnabled
+            calendarView.config.month.showDaysOut = settings.showDaysOut
+
             let formetter = DateFormatter()
             formetter.dateFormat = "MMMM"
             calendarView.config.monthTitle.formatter = formetter
@@ -76,7 +84,9 @@ class ViewController: UIViewController {
             
         case .year:
             calendarView.grid.calendarType = settings.gridType
-            
+            calendarView.isPagingEnabled = settings.isPagingEnabled
+            calendarView.config.month.showDaysOut = settings.showDaysOut
+
             let formetter = DateFormatter()
             formetter.dateFormat = settings.gridType == .threeOnFour ? "MMM" : "MMMM"
             calendarView.config.monthTitle.formatter = formetter

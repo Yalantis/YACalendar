@@ -26,6 +26,7 @@ public class YearHeaderConfig {
         case .oneOnOne: return UIFont.systemFont(ofSize: 32, weight: .bold)
         case .twoOnThree: return UIFont.systemFont(ofSize: 32, weight: .bold)
         case .threeOnFour: return UIFont.systemFont(ofSize: 32, weight: .bold)
+        case .week: return UIFont.systemFont(ofSize: 32, weight: .bold)
         }
     }
 }

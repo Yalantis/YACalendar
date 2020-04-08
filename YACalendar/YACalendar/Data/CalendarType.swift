@@ -12,7 +12,7 @@ fileprivate let isMaxScreen = UIScreen.main.bounds.width == 414
 fileprivate let maxNumberOfWeeks = 6
 
 public enum CalendarType {
-    case oneOnOne, twoOnThree, threeOnFour
+    case oneOnOne, twoOnThree, threeOnFour, week
     
     func monthSize(showTitle: Bool, numberOfWeeks: Int = maxNumberOfWeeks) -> CGSize {
         var size: CGSize = .zero
@@ -24,6 +24,7 @@ public enum CalendarType {
         case .oneOnOne: size.width = 320
         case .twoOnThree: size.width = 164
         case .threeOnFour: size.width = 110
+        case .week: size.width = 0
         }
         
         return size
@@ -34,6 +35,7 @@ public enum CalendarType {
         case .oneOnOne: return 46
         case .twoOnThree: return 29
         case .threeOnFour: return 22
+        case .week: return 49
         }
     }
     
@@ -42,6 +44,7 @@ public enum CalendarType {
         case .oneOnOne: return isMaxScreen ? 16 : 8
         case .twoOnThree: return 8
         case .threeOnFour: return 8
+        case .week: return 0
         }
     }
     
@@ -50,6 +53,7 @@ public enum CalendarType {
         case .oneOnOne: return UIEdgeInsets(top: 6, left: 8, bottom: 17, right: 6)
         case .twoOnThree: return UIEdgeInsets(top: 4, left: 4, bottom: 2, right: 4)
         case .threeOnFour: return UIEdgeInsets(top: 2, left: 4, bottom: 2, right: 4)
+        case .week: return UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)
         }
     }
     
@@ -59,6 +63,7 @@ public enum CalendarType {
         case .oneOnOne: return UIEdgeInsets(top: 0, left: 6, bottom: 6, right: 6)
         case .twoOnThree: return UIEdgeInsets(top: 2, left: 4, bottom: 0, right: 4)
         case .threeOnFour: return UIEdgeInsets(top: 2, left: 4, bottom: 0, right: 4)
+        case .week: return UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
         }
     }
     
@@ -67,6 +72,7 @@ public enum CalendarType {
         case .oneOnOne: return 44
         case .twoOnThree: return 22
         case .threeOnFour: return 14
+        case .week: return 44
         }
     }
     
@@ -75,6 +81,7 @@ public enum CalendarType {
         case .oneOnOne: return 0
         case .twoOnThree: return 46
         case .threeOnFour: return 46
+        case .week: return 0
         }
     }
     
@@ -92,6 +99,7 @@ public enum CalendarType {
         case .twoOnThree: return (3, 1)
         case .threeOnFour where isPortait: return (3, 4)
         case .threeOnFour: return (5, 1)
+        case .week: return (1, 1)
         }
     }
 }

@@ -209,8 +209,8 @@
 			children = (
 				88625607240402B600BF8985 /* AppDelegate.swift */,
 				8862560B240402C600BF8985 /* Main.storyboard */,
-				8862560A240402C600BF8985 /* SettingsViewController.swift */,
 				88625609240402C600BF8985 /* ViewController.swift */,
+				8862560A240402C600BF8985 /* SettingsViewController.swift */,
 				8862563B2404361500BF8985 /* YACalendar */,
 				886255FD2404027200BF8985 /* Assets.xcassets */,
 				886255FF2404027200BF8985 /* LaunchScreen.storyboard */,

@@ -27,6 +27,7 @@ public class MonthHeaderConfig {
         case .oneOnOne: return UIFont.systemFont(ofSize: 18, weight: .medium)
         case .twoOnThree: return UIFont.systemFont(ofSize: 18, weight: .semibold)
         case .threeOnFour: return UIFont.systemFont(ofSize: 14, weight: .semibold)
+        case .week: return UIFont.systemFont(ofSize: 16, weight: .medium)
         }
     }
 }

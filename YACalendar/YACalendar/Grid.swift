@@ -22,8 +22,22 @@ public class Grid {
         isPortrait: Bool,
         showDaysOut: Bool) -> CGSize {
         let matrix = calendarType.matrix(isPortait: isPortrait)
-        
+         
         switch scrollDirection {
+        case .horizonal where calendarType == .week:
+            let height = calendarType.weekHeight + calendarType.firstWeekTopInset
+            var width: CGFloat = 0.0
+            
+            for monthData in data.months.enumerated() {
+                let monthWidthData = monthWidthInWeekView(for: monthData.element, monthIndex: monthData.offset, rectSize: rectSize)
+                
+                if let firstXOffset = monthWidthData.x {
+                    width += firstXOffset
+                }
+                width += monthWidthData.width
+            }
+            return CGSize(width: width, height: height)
+            
         case .horizonal:
             let itemsPerPage = matrix.columns * matrix.rows
             let pages = (CGFloat(data.months.count) / CGFloat(itemsPerPage)).rounded(.up)
@@ -57,12 +71,32 @@ public class Grid {
         yearNumber: Int,
         rectSize: CGSize,
         isPortrait: Bool,
+        previousMonthMaxX: CGFloat,
         showDaysOut: Bool) -> CGRect {
         let matrix = calendarType.matrix(isPortait: isPortrait)
         let monthSize = calendarType.monthSize(showTitle: showTitle)
         let leadingInset = (rectSize.width - (CGFloat(matrix.columns) * monthSize.width)) / CGFloat(matrix.columns + 1)
 
         switch scrollDirection {
+        case .horizonal where calendarType == .week:
+            var x: CGFloat = 0.0
+            let month = data.months[index]
+            let monthWidthData = monthWidthInWeekView(for: month, monthIndex: index, rectSize: rectSize)
+
+            if let xValue = monthWidthData.x {
+                x = xValue
+            } else {
+                x = previousMonthMaxX
+            }
+            
+            let size = CGSize(
+                    width: monthWidthData.width,
+                    height: calendarType.firstWeekTopInset + calendarType.weekHeight
+                )
+            
+            let originPoint = CGPoint(x: x, y: 0)
+            return CGRect(origin: originPoint, size: size)
+            
         case .horizonal:
             let xIndexOffset = CGFloat(index / (matrix.columns * matrix.rows)) * rectSize.width
             let leading = leadingInset * (CGFloat(index % matrix.columns) + 1)
@@ -102,10 +136,29 @@ public class Grid {
         }
     }
     
-    func weekRect(for weekIndex: Int, showTitle: Bool, monthRect: CGRect) -> CGRect {
-        var weekSize = CGSize(width: monthRect.width, height: calendarType.weekHeight)
+    func weekRectForWeekView(monthData: MonthData, weekIndex: Int, screenWidth: CGFloat, previousWeekEndX: CGFloat) -> CGRect {
+        let isFirstWeek = weekIndex == 0
+        let dayWidth: CGFloat = screenWidth / CGFloat(daysInWeek)
+        var weekWidth: CGFloat = dayWidth * CGFloat(daysInWeek)
+        let daysInCurrentWeek = monthData.weeks[weekIndex].days.filter { $0.state != .out }
+        let isLastWeek = isFirstWeek == false && daysInCurrentWeek.count != daysInWeek
+
+        if isFirstWeek || isLastWeek {
+            weekWidth = CGFloat(daysInCurrentWeek.count) * (dayWidth)
+        }
+        
+        return CGRect(
+            x: previousWeekEndX,
+            y: calendarType.firstWeekTopInset,
+            width: weekWidth,
+            height: calendarType.weekHeight
+        )
+    }
+    
+    func weekRect(for weekIndex: Int, showTitle: Bool, rect: CGRect) -> CGRect {
+        var weekSize = CGSize(width: rect.width, height: calendarType.weekHeight)
         weekSize.width -= calendarType.weekInset.left + calendarType.weekInset.right
-                
+        
         let x: CGFloat = calendarType.weekInset.left
         let titleInset = showTitle ? calendarType.firstWeekTopInset : calendarType.weekInset.top
         let y: CGFloat = titleInset + (calendarType.weekInset.top * CGFloat(weekIndex)) + (CGFloat(weekIndex) * weekSize.height)
@@ -118,6 +171,18 @@ public class Grid {
             height: weekRect.height
         )
         let x: CGFloat = (CGFloat(dayIndex) * daySize.width) + (calendarType.distanceBetweenDays * CGFloat(dayIndex))
+        let y: CGFloat = 0.0
+        return CGRect(origin: CGPoint(x: x, y: y), size: daySize)
+    }
+    
+    func dayRectForWeekView(for dayIndex: Int, weekRect: CGRect, screenWidth: CGFloat) -> CGRect {
+        let dayWidth: CGFloat = screenWidth / CGFloat(daysInWeek)
+        
+        let daySize = CGSize(
+            width: dayWidth,
+            height: weekRect.height
+        )
+        let x: CGFloat = (CGFloat(dayIndex) * daySize.width)
         let y: CGFloat = 0.0
         return CGRect(origin: CGPoint(x: x, y: y), size: daySize)
     }
@@ -136,6 +201,7 @@ public class Grid {
         case .oneOnOne: return CGRect(x: 0, y: 0, width: monthWidth, height: 46)
         case .twoOnThree: return CGRect(x: 0, y: 0, width: monthWidth, height: 27)
         case .threeOnFour: return CGRect(x: 0, y: 0, width: monthWidth, height: 20)
+        case .week: return CGRect(x: 0, y: 8, width: monthWidth, height: 20)
         }
     }
     
@@ -178,5 +244,33 @@ public class Grid {
                 return CGPoint(x: 0, y: y)
             }
         }
+    }
+}
+
+extension Grid {
+    
+    private func monthWidthInWeekView(for monthData: MonthData, monthIndex: Int, rectSize: CGSize) -> (width: CGFloat, x: CGFloat?) {
+        var width: CGFloat = 0.0
+        var firstMonthX: CGFloat? = nil
+
+        for weekData in monthData.weeks.enumerated() {
+            width += weekRectForWeekView(
+                monthData: monthData,
+                weekIndex: weekData.offset,
+                screenWidth: rectSize.width,
+                previousWeekEndX: 0
+            ).width
+        }
+        
+        if monthIndex == 0 {
+            firstMonthX = rectSize.width - weekRectForWeekView(
+                monthData: monthData,
+                weekIndex: 0,
+                screenWidth: rectSize.width,
+                previousWeekEndX: 0
+            ).width
+        }
+        
+        return (width, firstMonthX)
     }
 }
