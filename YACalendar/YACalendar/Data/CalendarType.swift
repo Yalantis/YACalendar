@@ -35,7 +35,7 @@ public enum CalendarType {
         case .oneOnOne: return 46
         case .twoOnThree: return 29
         case .threeOnFour: return 22
-        case .week: return 49
+        case .week: return 0
         }
     }
     

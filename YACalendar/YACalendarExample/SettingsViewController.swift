@@ -15,9 +15,9 @@ class CalendarSettings {
     var endDate = Calendar.current.date(byAdding: .year, value: 1, to: Date())!
     var isPagingEnabled: Bool = false
     var showDaysOut: Bool = true
-    var selectionType: SelectionType = .range
+    var selectionType: SelectionType = .one
+    var isWeekViewEnabled: Bool = true
 }
-
 
 class SettingsViewController: UIViewController {
     
@@ -27,6 +27,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet private var endDateField: UITextField!
     @IBOutlet private var daysOutSwitch: UISwitch!
     @IBOutlet private var pagingSwitch: UISwitch!
+    @IBOutlet private var isWeekViewEnabledSwitch: UISwitch!
     @IBOutlet private var selectionTypeControl: UISegmentedControl!
 
     var settings: CalendarSettings!
@@ -50,6 +51,7 @@ class SettingsViewController: UIViewController {
         endDateField.text = dateFormatter.string(from: settings.endDate)
         daysOutSwitch.isOn = settings.showDaysOut
         pagingSwitch.isOn = settings.isPagingEnabled
+        isWeekViewEnabledSwitch.isOn = settings.isWeekViewEnabled
         selectionTypeControl.selectedSegmentIndex = settings.selectionType.index
     }
     
@@ -61,6 +63,7 @@ class SettingsViewController: UIViewController {
         settings.isPagingEnabled = pagingSwitch.isOn
         settings.gridType = CalendarType(index: matrixControl.selectedSegmentIndex)
         settings.selectionType = SelectionType(index: selectionTypeControl.selectedSegmentIndex)
+        settings.isWeekViewEnabled = isWeekViewEnabledSwitch.isOn
         
         applySettings?()
         dismiss(animated: true, completion: nil)

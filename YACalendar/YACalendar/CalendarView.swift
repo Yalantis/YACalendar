@@ -84,16 +84,28 @@ public class CalendarView: UIView {
     public func scroll(to date: Date) {
         guard let data = data, let monthWithCurrentDate = data.monthData(with: date) else { return }
         
-        var origin = grid.originForMonth(
-            with: monthWithCurrentDate.offset,
-            position: monthWithCurrentDate.element.gridPosition,
-            data: data,
-            yearNumber: monthWithCurrentDate.element.yearNumber,
-            showTitle: config.month.showTitle,
-            rectSize: scrollView.frame.size,
-            isPortrait: isPortrait,
-            showDaysOut: config.month.showDaysOut
-        )
+        var origin: CGPoint
+        
+        if grid.calendarType == .week {
+            let monthOrigin = monthWithCurrentDate.element.rect.origin
+            let weekOrigin = monthWithCurrentDate.element.weeks.first(where: {
+                $0.days.contains(where: { data.calendar.isDate($0.date, inSameDayAs: date) })
+            })?.rect.origin ?? .zero
+            
+            origin = CGPoint(x: monthOrigin.x + weekOrigin.x, y: monthOrigin.y)
+        } else {
+            origin = grid.originForMonth(
+                with: monthWithCurrentDate.offset,
+                position: monthWithCurrentDate.element.gridPosition,
+                data: data,
+                yearNumber: monthWithCurrentDate.element.yearNumber,
+                showTitle: config.month.showTitle,
+                rectSize: scrollView.frame.size,
+                isPortrait: isPortrait,
+                showDaysOut: config.month.showDaysOut
+            )
+        }
+
         if origin == .zero {
             origin.x += 1
         }
@@ -246,7 +258,7 @@ public class CalendarView: UIView {
         
         guard let tappedMonth = data.months.first(where: { $0.rect.contains(tappedPoint) }) else { return }
         
-        if grid.calendarType == .oneOnOne {
+        if grid.calendarType == .oneOnOne || grid.calendarType == .week {
             let tappedPointInMonth = sender.location(in: tappedMonth.view)
             let tappedWeek = tappedMonth.weeks.first(where: { $0.rect.contains(tappedPointInMonth) })
             let tappedPointInWeek = sender.location(in: tappedWeek?.view)
@@ -489,7 +501,13 @@ public class CalendarView: UIView {
             daysStackView.addArrangedSubview(label)
         }
         
-        let inset = (scrollView.frame.width - (CGFloat(grid.calendarType.matrix(isPortait: isPortrait).columns) * grid.calendarType.monthSize(showTitle: config.month.showTitle).width)) / 2
+        var inset: CGFloat = 0.0
+        
+        if grid.calendarType == .oneOnOne {
+            inset = (scrollView.frame.width - (CGFloat(grid.calendarType.matrix(isPortait: isPortrait).columns) * grid.calendarType.monthSize(showTitle: config.month.showTitle).width)) / 2
+        } else {
+            inset = 0
+        }
         daysStackView.frame.origin.x = inset
         daysStackView.frame.size = CGSize(width: frame.width - (inset * 2), height: config.daySymbols.height)
         daysSymbolsSeparatorView.frame = CGRect(x: 0, y: daysStackView.frame.maxY, width: scrollView.frame.width, height: 1)

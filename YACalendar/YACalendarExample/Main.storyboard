@@ -11,12 +11,12 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="YALCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="YACalendarExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rID-I6-YJH" customClass="CalendarView" customModule="YALCalendar" customModuleProvider="target">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rID-I6-YJH" customClass="CalendarView" customModule="YACalendarExample" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -72,7 +72,7 @@
         <!--Settings View Controller-->
         <scene sceneID="CcW-cr-nhi">
             <objects>
-                <viewController id="nMv-z5-IId" customClass="SettingsViewController" customModule="YALCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nMv-z5-IId" customClass="SettingsViewController" customModule="YACalendarExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VaH-kU-m23">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -271,9 +271,28 @@
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUI-Xa-HAf">
                                                 <rect key="frame" x="0.0" y="300" width="414" height="40"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nNu-ti-dgN">
+                                                        <rect key="frame" x="10" y="0.0" width="138.5" height="40"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="week view" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKb-5e-5iA" userLabel="show days out">
+                                                                <rect key="frame" x="0.0" y="0.0" width="79.5" height="40"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="diD-kG-HsW">
+                                                                <rect key="frame" x="89.5" y="0.0" width="51" height="40"/>
+                                                            </switch>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="ftW-cr-emN"/>
+                                                    <constraint firstItem="nNu-ti-dgN" firstAttribute="top" secondItem="eUI-Xa-HAf" secondAttribute="top" id="lzK-0b-WBx"/>
+                                                    <constraint firstItem="nNu-ti-dgN" firstAttribute="leading" secondItem="eUI-Xa-HAf" secondAttribute="leading" constant="10" id="q2L-GI-n0q"/>
+                                                    <constraint firstAttribute="bottom" secondItem="nNu-ti-dgN" secondAttribute="bottom" id="q8v-K9-vWb"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jvA-QM-wa9">
@@ -324,6 +343,7 @@
                         <outlet property="daysOutSwitch" destination="h0k-T9-t9Y" id="yIn-uP-mhJ"/>
                         <outlet property="directionControl" destination="BN8-hg-k5a" id="si0-g4-844"/>
                         <outlet property="endDateField" destination="KRD-2B-rbv" id="maJ-HB-hNU"/>
+                        <outlet property="isWeekViewEnabledSwitch" destination="diD-kG-HsW" id="7fY-wL-rzG"/>
                         <outlet property="matrixControl" destination="OUa-uP-KNF" id="eih-r8-HD1"/>
                         <outlet property="pagingSwitch" destination="CSP-Wh-85E" id="Ghr-oE-vzQ"/>
                         <outlet property="selectionTypeControl" destination="tLM-it-nU2" id="jMY-KO-oI3"/>

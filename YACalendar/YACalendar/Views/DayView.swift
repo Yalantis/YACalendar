@@ -49,7 +49,13 @@ public final class DayView: UIView {
         if day.state == .today || day.indicator != .none {
             let view = UIView()
             let inset = config.indicatorInset(for: calendarType)
-            view.frame = bounds.inset(by: inset)
+            view.frame = CGRect(
+                x: 0,
+                y: 0,
+                width: bounds.inset(by: inset).height,
+                height: bounds.inset(by: inset).height
+            )
+            view.center = CGPoint(x: bounds.midX, y: bounds.midY)
             view.layer.cornerRadius = view.frame.height / 2
             view.tag = dayIndicatorViewTag
             view.backgroundColor = config.indicatorColor(for: day.state, indicator: day.indicator)

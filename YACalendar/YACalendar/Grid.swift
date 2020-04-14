@@ -12,6 +12,7 @@ public class Grid {
  
     public var calendarType: CalendarType = .oneOnOne
     public var scrollDirection: ScrollDirection = .horizonal
+    public var isWeekViewEnabled: Bool = true
 
     private let daysInWeek = 7
     
